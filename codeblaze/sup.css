@@ -1,0 +1,167 @@
+/* Reset some default styles */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4; /* Light gray background */
+    color: #333; /* Dark gray text color */
+}
+
+/* Navigation styles */
+nav {
+    background-color: #2c3e50; /* Dark blue background */
+    color: white;
+    padding: 15px 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; /* Allow flex items to wrap */
+}
+
+nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.home-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0f90e6;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    position: absolute; 
+    top: 10px; 
+    left: 10px; 
+}
+.home-btn:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+}
+
+
+nav img.logo {
+    width: 90px;
+    height: 90px;
+}
+
+nav h1.branding {
+    font-size: 34px;
+    margin-left: 450px;
+}
+
+/* Product Listing Section styles */
+#product-listing {
+    background-color: #ecf0f1; /* Light gray background */
+    padding: 80px 0;
+}
+
+#products-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.product-card {
+    width: 300px;
+    margin: 20px;
+    padding: 15px;
+    border: 1px solid #dcdcdc; /* Light gray border */
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+.product-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.product-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.product-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.product-price {
+    color: #e44d26; /* eBay's orange color for price */
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Post Button Section styles */
+#post-button {
+    text-align: center;
+    margin-left: 500px;
+}
+
+.post-card {
+    background-color: #3498db; /* Blue background color for the post button */
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.post-card:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+}
+
+/* Additional styles for the Search Bar */
+#twotabsearchtextbox {
+    margin-top: 20px; /* Adjust the margin as needed */
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-left: 20px; /* Adjust the margin to separate from the navigation */
+}
+
+/* Container styles */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allow flex items to wrap */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #twotabsearchtextbox {
+        width: 100%;
+        margin-top: 10px; /* Adjust the margin as needed */
+    }
+
+    .product-card {
+        width: 100%;
+    }
+}
