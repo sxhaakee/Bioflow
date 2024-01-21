@@ -25,3 +25,7 @@ Explore BioFlow's landing page (`index.html`) to learn more about our project an
 ## The statistics 
 The statistics of the fish waste generated and the industry needed w/w
 ![image](https://github.com/sxhaakee/Bioflow/assets/138206634/b911ef4c-cb50-4156-878e-9b1c0a34f059)
+![image](https://github.com/sxhaakee/Bioflow/assets/138206634/7139033e-44ce-4ab3-8228-f73ac3535102)
+![image](https://github.com/sxhaakee/Bioflow/assets/138206634/5106bff4-2e65-4457-b9a3-df6edc33ffc1)
+
+
