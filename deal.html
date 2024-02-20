@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Today's Deal</title>
+    <link rel="stylesheet" href="deal.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Delay the animation to start after a short delay (adjust the delay as needed)
+            setTimeout(function() {
+                document.getElementById("product-container-2").style.opacity = "1";
+                document.getElementById("product-container-2").style.transform = "translateY(0)";
+                document.querySelector(".tag").style.opacity = "1";
+                document.querySelector(".tag").style.transform = "translateY(0)";
+            }, 60); // 500ms delay
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a class="nav" id="hom" href="index.html">HOME</a></li>
+                <li><a class="nav" id="pro" href="product.html">PRODUCTS</a></li>
+                <li><a class="nav" id="dea"href="deal.html">DEALS</a></li>
+                <li><a class="nav" id="abo" href="about.html">ABOUT US</a></li>
+                <li><a class="nav" id="con" href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+        
+        
+        <div class="login-buttons">
+            
+            <a href="login.html">Supplier Login</a>
+            <a href="login2.html">Consumer Login</a>
+        </div>
+    </header>
+    
+    <div id="today">
+    <h1>TODAY'S DEAL..!!</h1>
+    </div>
+   
+    <div class="product-container" id="product-container-2"></div>
+    <div class="product-container" id="product-container-2"></div>
+
+    <script src="script2.js"></script>
+</body>
+<footer>
+    <p>&copy; 2024 BIOFLOW. All rights reserved.</p>
+</footer>
+
+</html>
