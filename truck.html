@@ -1,219 +1,401 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drivers Information</title>
+    <title>Logistics & Transport - BIOFLOW</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            background: url('truck1.jpg') no-repeat center center fixed;
-    background-size: cover;
+            padding-top: 70px;
         }
 
-        header {
-            background-color: #333;
-            color: white;
-            padding: 10px;
+        .logistics-hero {
+            background: linear-gradient(135deg, #00695c 0%, #00897b 100%);
+            padding: 6rem 2rem 4rem;
             text-align: center;
-            position: relative; /* Make the header a positioning context */
+            color: white;
         }
 
-    
-        section {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            padding-top: 100px;
-          
+        .logistics-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 1rem;
+        }
+
+        .logistics-hero p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+        }
+
+        .booking-section {
+            padding: 4rem 2rem;
+            background: var(--light-bg);
+        }
+
+        .booking-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .booking-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .booking-form h2 {
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--gray-700);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid var(--gray-300);
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #ff8c5a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+        }
+
+        .drivers-list {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .drivers-list h2 {
+            margin-bottom: 2rem;
+            color: var(--primary-color);
         }
 
         .driver-card {
-            background-color: #09223c;
-            border: 2px solid #dbe9f8;
-            border-radius: 15px;
-            box-shadow:10 10 10px rgba(6, 14, 64, 0.1);
-            padding: 40px;
-            margin: 20px;
-            width: 230px;
-            text-align: center;
-                
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
         }
 
-        .driver-photo {
-            width: 120px;
-            height: 120px;
+        .driver-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .driver-avatar {
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
-            overflow: hidden;
-            margin: 0 auto 15px;
+            background: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
         }
 
-        .driver-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .driver-info h4 {
+            margin-bottom: 0.5rem;
+            color: var(--gray-900);
         }
 
-        .driver-name {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #ffffff;
+        .driver-meta {
+            display: flex;
+            gap: 1rem;
+            color: var(--gray-600);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
         }
 
-        .star-rating {
-            color: #f4ea64;
-            margin-bottom: 10px;
-            font-size: large;
+        .driver-rating {
+            color: #ffa000;
         }
-        .trips{
-            color: #e7effd;
-            font-size: large;
-            padding: 2px;
-            font-family:Arial, Helvetica, sans-serif;
-            font-weight: bold;
+
+        .book-driver-btn {
+            padding: 0.6rem 1.5rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-left: auto;
         }
-        .contact{
-            font-weight:600;
-            padding:10px;
-            margin-top: 20px;
-            margin-left:50px;
-            margin-right:50px;
-            border-radius: 5px;
-            background-color: #cee4f8;
-            color: #09223c;
-            border-color: #15135b;
-            font-size: large;
+
+        .book-driver-btn:hover {
+            background: var(--primary-dark);
         }
-        .contact:hover {
-            background-color:#fafafa; /* Darker blue on hover, you can change this */
-            transform: scale(1.15); /* Scale up slightly on hover */
+
+        @media (max-width: 768px) {
+            .booking-container {
+                grid-template-columns: 1fr;
+            }
         }
-        
-header {
-    display:flex;
-    justify-content: space-between;
-    align-items:center;
-    padding: 15px;
-    padding-top: 20px;
-    background:#09223c; /* Gradient from green to gray */
-   /* Light Grey */
-    position: fixed; /* Make the header fixed */
-    top: 0; /* Position it at the top */
-    width: 100%; /* Make it full-width */
-    z-index:1000; /* Ensure it's above other elements */
-}
-
-/* Rest of your CSS styles */
-
-nav {
-    display: inline;
-}
-
-nav ul {
-    display:flex;
-    list-style: none;
-    padding:0%;
-    margin:2px;
-}
-
-nav a {
-    text-decoration:none;
-    color:#c9d9f2; /* Gradient from green to gray */
-    font-weight: normal;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    transition: color 0.3s ease, transform 0.2s ease;
-}
-nav a:hover {
-    color: #ffffff; /* Change to hover color */
-    transform: scale(1.05);
-}
-.login-buttons {
-    margin-right: 30px; /* Adjusted margin */
-    margin-left: 20px;
-}
-
-nav ul li {
-    margin-right: 15px;
-    font-size: large;
-    margin-left: 5px;
-    padding:0%;
-}
-
-.login-buttons a {
-    margin-left: 15px;
-    padding: 10px 20px;
-    border: 1px solid #e3ebf7; /* Light Grey */
-    border-radius: 5px;
-    color:#e7effd;
-    text-decoration: none;
-}
-
     </style>
 </head>
-
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a class="nav" href="index.html">HOME</a></li>
-                <li><a class="nav" href="product.html">PRODUCTS</a></li>
-                <li><a class="nav" href="deal.html">DEALS</a></li>
-                <li><a class="nav" href="about.html">ABOUT US</a></li>
-                <li><a class="nav" href="contact.html">CONTACT</a></li>
-            </ul>
-        </nav>
-        
-        
-        <div class="login-buttons">
-            
-            <a href="login.html">Supplier Login</a>
-            <a href="login2.html">Consumer Login</a>
+    <!-- Navigation -->
+    <header class="modern-header">
+        <div class="nav-container">
+            <div class="logo">BIO<span>FLOW</span></div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="product.html">BROWSE WASTE</a></li>
+                    <li><a href="deal.html">DEALS</a></li>
+                    <li><a href="truck.html" class="active">LOGISTICS</a></li>
+                    <li><a href="about.html">ABOUT US</a></li>
+                </ul>
+            </nav>
+            <div class="nav-actions">
+                <a href="login.html" class="btn btn-outline">Login</a>
+            </div>
         </div>
     </header>
 
-    <section>
-        <!-- Driver 1 -->
-        <div class="driver-card">
-            <div class="driver-photo">
-                <img src="driver1.png" alt="Driver 1">
-            </div>
-            <div class="driver-name">John Doel</div>
-            <div class="star-rating">4.7⭐</div>
-            <div class="trips">Trips-2289</div>
-            <div class="contact">Contact</div>
-            <!-- Add other information as needed -->
-        </div>
+    <!-- Hero -->
+    <section class="logistics-hero">
+        <h1><i class="fas fa-truck"></i> Logistics & Transport</h1>
+        <p>Book reliable transport for your fish waste - Safe, Fast, Affordable</p>
+    </section>
 
-        <!-- Driver 2 -->
-        <div class="driver-card">
-            <div class="driver-photo">
-                <img src="driver2.jpeg" alt="Driver 2">
-            </div>
-            <div class="driver-name">Jane Smith</div>
-            <div class="star-rating">4.2⭐</div>
-            <div class="trips">Trips-2876</div>
-            <div class="contact">Contact</div><!-- Add other information as needed -->
-        </div>
+    <!-- Booking Section -->
+    <section class="booking-section">
+        <div class="booking-container">
+            <!-- Booking Form -->
+            <div class="booking-form">
+                <h2>Book Transport</h2>
+                <form id="bookingForm">
+                    <div class="form-group">
+                        <label>Pickup Location *</label>
+                        <input type="text" name="pickup" placeholder="Enter pickup address" required>
+                    </div>
 
-        <!-- Driver 3 -->
-        <div class="driver-card">
-            <div class="driver-photo">
-                <img src="driver3.jpg" alt="Driver 3">
+                    <div class="form-group">
+                        <label>Delivery Location *</label>
+                        <input type="text" name="delivery" placeholder="Enter delivery address" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Pickup Date *</label>
+                            <input type="date" name="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Pickup Time *</label>
+                            <input type="time" name="time" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Waste Type *</label>
+                            <select name="wasteType" required>
+                                <option value="">Select type</option>
+                                <option value="fish-heads">Fish Heads</option>
+                                <option value="fish-scales">Fish Scales</option>
+                                <option value="fish-bones">Fish Bones</option>
+                                <option value="mixed">Mixed Waste</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Quantity (kg) *</label>
+                            <input type="number" name="quantity" placeholder="Enter quantity" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Special Instructions</label>
+                        <textarea name="instructions" rows="3" placeholder="Any special handling requirements..."></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Contact Name *</label>
+                            <input type="text" name="contactName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Contact Phone *</label>
+                            <input type="tel" name="contactPhone" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-check-circle"></i> Book Transport
+                    </button>
+                </form>
             </div>
-            <div class="driver-name">Bob Johnson</div>
-            <div class="star-rating">4.4⭐</div>
-            <div class="trips">Trips-1968 </div>
-            <div class="contact">Contact</div><!-- Add other information as needed -->
+
+            <!-- Available Drivers -->
+            <div class="drivers-list">
+                <h2>Available Drivers</h2>
+                
+                <div class="driver-card">
+                    <div class="driver-avatar">🚚</div>
+                    <div class="driver-info">
+                        <h4>Ramesh Transport</h4>
+                        <div class="driver-meta">
+                            <span><i class="fas fa-truck"></i> 5-ton capacity</span>
+                            <span class="driver-rating"><i class="fas fa-star"></i> 4.9</span>
+                        </div>
+                        <div style="color: var(--gray-600); font-size: 0.85rem; margin-top: 0.3rem;">
+                            150+ completed trips
+                        </div>
+                    </div>
+                    <button class="book-driver-btn" onclick="bookDriver('Ramesh Transport')">Book</button>
+                </div>
+
+                <div class="driver-card">
+                    <div class="driver-avatar">🚛</div>
+                    <div class="driver-info">
+                        <h4>Coastal Logistics</h4>
+                        <div class="driver-meta">
+                            <span><i class="fas fa-truck"></i> 10-ton capacity</span>
+                            <span class="driver-rating"><i class="fas fa-star"></i> 4.8</span>
+                        </div>
+                        <div style="color: var(--gray-600); font-size: 0.85rem; margin-top: 0.3rem;">
+                            200+ completed trips
+                        </div>
+                    </div>
+                    <button class="book-driver-btn" onclick="bookDriver('Coastal Logistics')">Book</button>
+                </div>
+
+                <div class="driver-card">
+                    <div class="driver-avatar">🚐</div>
+                    <div class="driver-info">
+                        <h4>Quick Movers</h4>
+                        <div class="driver-meta">
+                            <span><i class="fas fa-truck"></i> 3-ton capacity</span>
+                            <span class="driver-rating"><i class="fas fa-star"></i> 4.7</span>
+                        </div>
+                        <div style="color: var(--gray-600); font-size: 0.85rem; margin-top: 0.3rem;">
+                            100+ completed trips
+                        </div>
+                    </div>
+                    <button class="book-driver-btn" onclick="bookDriver('Quick Movers')">Book</button>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- Footer -->
+    <footer class="modern-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>BIOFLOW</h3>
+                <p>Connecting fish waste suppliers with industries.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="index.html">Home</a></p>
+                <p><a href="product.html">Browse Waste</a></p>
+                <p><a href="about.html">About Us</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p><i class="fas fa-envelope"></i> info@bioflow.com</p>
+                <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 BIOFLOW. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Create pickup object
+            const pickup = {
+                id: 'PK' + Date.now(),
+                date: data.date,
+                time: data.time,
+                pickup: data.pickup,
+                delivery: data.delivery,
+                wasteType: data.wasteType,
+                quantity: data.quantity,
+                contactName: data.contactName,
+                contactPhone: data.contactPhone,
+                instructions: data.instructions,
+                driver: 'Pending Assignment',
+                status: 'scheduled',
+                createdAt: new Date().toISOString()
+            };
+            
+            // Get existing pickups from localStorage
+            let pickups = JSON.parse(localStorage.getItem('supplierPickups')) || [];
+            
+            // Add new pickup
+            pickups.push(pickup);
+            
+            // Save to localStorage
+            localStorage.setItem('supplierPickups', JSON.stringify(pickups));
+            
+            alert(`Transport Booked Successfully!\n\nPickup ID: ${pickup.id}\nPickup: ${data.pickup}\nDelivery: ${data.delivery}\nDate: ${data.date}\nTime: ${data.time}\nQuantity: ${data.quantity} kg\n\nView your pickup in the dashboard under "Pickups" section.`);
+            
+            this.reset();
+        });
+
+        function bookDriver(driverName) {
+            alert(`Booking ${driverName}...\n\nPlease fill the booking form to complete your request.`);
+            document.querySelector('input[name="pickup"]').focus();
+        }
+    </script>
 </body>
-
-
 </html>

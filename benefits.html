@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benefits of Fish Waste - BIOFLOW</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            padding-top: 70px;
+        }
+
+        .benefits-hero {
+            background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefits-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.05" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,101.3C1248,85,1344,75,1392,69.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+        }
+
+        .benefits-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .benefits-hero p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .problem-solution {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .problem-solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .problem-box, .solution-box {
+            padding: 3rem;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .problem-box {
+            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+            border-left: 6px solid #f44336;
+        }
+
+        .solution-box {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border-left: 6px solid #4caf50;
+        }
+
+        .problem-box h2, .solution-box h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .problem-box h2 {
+            color: #c62828;
+        }
+
+        .solution-box h2 {
+            color: #2e7d32;
+        }
+
+        .problem-box h2 i, .solution-box h2 i {
+            font-size: 2.5rem;
+        }
+
+        .problem-list, .solution-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .problem-list li, .solution-list li {
+            padding: 1rem 0;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .problem-list li i {
+            color: #f44336;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .solution-list li i {
+            color: #4caf50;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .benefits-grid-section {
+            padding: 4rem 2rem;
+            background: var(--light-bg);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 3rem auto 0;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border-top: 4px solid;
+        }
+
+        .benefit-card:nth-child(1) { border-top-color: #4caf50; }
+        .benefit-card:nth-child(2) { border-top-color: #2196f3; }
+        .benefit-card:nth-child(3) { border-top-color: #ff9800; }
+        .benefit-card:nth-child(4) { border-top-color: #9c27b0; }
+        .benefit-card:nth-child(5) { border-top-color: #f44336; }
+        .benefit-card:nth-child(6) { border-top-color: #00bcd4; }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        .benefit-card-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .benefit-card p {
+            color: var(--gray-600);
+            line-height: 1.8;
+        }
+
+        .impact-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 3rem auto 0;
+        }
+
+        .impact-stat {
+            padding: 2rem;
+        }
+
+        .impact-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #05c3dd;
+            margin-bottom: 0.5rem;
+        }
+
+        .impact-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .cta-benefits {
+            padding: 4rem 2rem;
+            background: var(--secondary-color);
+            text-align: center;
+            color: white;
+        }
+
+        .cta-benefits h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-benefits p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        @media (max-width: 768px) {
+            .problem-solution-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Navigation -->
+    <header class="modern-header" id="header">
+        <div class="nav-container">
+            <div class="logo">
+                BIO<span>FLOW</span>
+            </div>
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="product.html">BROWSE WASTE</a></li>
+                    <li><a href="deal.html">DEALS</a></li>
+                    <li><a href="benefits.html" class="active">BENEFITS</a></li>
+                    <li><a href="about.html">ABOUT US</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </nav>
+            <div class="nav-actions">
+                <a href="login.html" class="btn btn-outline">Supplier Login</a>
+                <a href="login2.html" class="btn btn-primary">Industry Login</a>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="benefits-hero">
+        <h1><i class="fas fa-lightbulb"></i> Why Fish Waste Matters</h1>
+        <p>Understanding the problem, discovering the solution, and creating a sustainable future together</p>
+    </section>
+
+    <!-- Problem & Solution -->
+    <section class="problem-solution">
+        <div class="problem-solution-grid">
+            <div class="problem-box">
+                <h2>
+                    <i class="fas fa-exclamation-triangle"></i>
+                    The Problem
+                </h2>
+                <ul class="problem-list">
+                    <li>
+                        <i class="fas fa-times-circle"></i>
+                        <span><strong>2.3 Million Tons</strong> of fish waste generated annually in India alone</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-times-circle"></i>
+                        <span><strong>Ocean Pollution:</strong> Most fish waste is dumped back into oceans, causing water pollution and harming marine life</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-times-circle"></i>
+                        <span><strong>Health Hazards:</strong> Rotting fish waste near markets creates foul odors and spreads diseases</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-times-circle"></i>
+                        <span><strong>Lost Revenue:</strong> Fishermen and markets lose potential income by treating waste as garbage</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-times-circle"></i>
+                        <span><strong>Resource Waste:</strong> Valuable nutrients and proteins are wasted instead of being utilized</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="solution-box">
+                <h2>
+                    <i class="fas fa-check-circle"></i>
+                    Our Solution
+                </h2>
+                <ul class="solution-list">
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span><strong>Direct Connection:</strong> Link fish waste suppliers with industries that need it</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span><strong>Turn Waste into Revenue:</strong> Fishermen earn ₹10-25/kg for what they used to throw away</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span><strong>Reduce Pollution:</strong> Keep fish waste out of oceans and landfills</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span><strong>Support Industries:</strong> Provide raw materials for fertilizers, animal feed, cosmetics</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span><strong>Circular Economy:</strong> Create a sustainable system where nothing goes to waste</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Grid -->
+    <section class="benefits-grid-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Benefits of Fish Waste Recycling</h2>
+                <p class="section-subtitle">How fish waste creates value across multiple industries</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-card-icon">🌱</div>
+                    <h3>Organic Fertilizer</h3>
+                    <p>Fish waste is rich in nitrogen (10%), phosphorus (6%), and potassium - essential nutrients for plant growth. Creates high-quality organic fertilizer without chemicals.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-card-icon">🐄</div>
+                    <h3>Animal Feed</h3>
+                    <p>Fish meal contains 60-72% protein, making it an excellent ingredient for poultry, livestock, and aquaculture feed. Improves animal health and growth.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-card-icon">💄</div>
+                    <h3>Cosmetics & Pharma</h3>
+                    <p>Fish scales contain collagen used in anti-aging creams, supplements, and medical applications. High-value product from waste material.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-card-icon">⚡</div>
+                    <h3>Biogas Production</h3>
+                    <p>Fish waste can be converted into biogas for energy production. Sustainable renewable energy source from organic waste.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-card-icon">🐟</div>
+                    <h3>Aquaculture</h3>
+                    <p>Fish hydrolysate improves water quality in fish farms and provides nutrients for fish growth. Supports sustainable aquaculture.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-card-icon">🌍</div>
+                    <h3>Environmental Impact</h3>
+                    <p>Reduces ocean pollution, prevents greenhouse gas emissions from rotting waste, and supports circular economy principles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact-section">
+        <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Our Impact Potential</h2>
+        <p style="font-size: 1.2rem; opacity: 0.9; max-width: 800px; margin: 0 auto;">
+            If we recycle just 50% of India's fish waste through BIOFLOW
+        </p>
+        <div class="impact-stats">
+            <div class="impact-stat">
+                <div class="impact-number">1.15M</div>
+                <div class="impact-label">Tons Recycled Annually</div>
+            </div>
+            <div class="impact-stat">
+                <div class="impact-number">₹575Cr</div>
+                <div class="impact-label">Revenue Generated</div>
+            </div>
+            <div class="impact-stat">
+                <div class="impact-number">50,000+</div>
+                <div class="impact-label">Jobs Created</div>
+            </div>
+            <div class="impact-stat">
+                <div class="impact-number">100%</div>
+                <div class="impact-label">Ocean Pollution Reduced</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-benefits">
+        <h2>Ready to Make a Difference?</h2>
+        <p>Join BIOFLOW today and be part of the solution</p>
+        <div class="hero-actions">
+            <a href="login.html" class="btn" style="background: white; color: var(--secondary-color); font-size: 1.1rem; padding: 1rem 2rem;">
+                <i class="fas fa-fish"></i> List Your Waste
+            </a>
+            <a href="login2.html" class="btn btn-outline" style="border-color: white; color: white; font-size: 1.1rem; padding: 1rem 2rem;">
+                <i class="fas fa-industry"></i> Find Suppliers
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="modern-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>BIOFLOW</h3>
+                <p>Connecting fish waste suppliers with industries. Turn waste into value, support sustainability.</p>
+            </div>
+            <div class="footer-section">
+                <h3>For Suppliers</h3>
+                <p><a href="login.html">List Your Waste</a></p>
+                <p><a href="login.html">Supplier Dashboard</a></p>
+                <p><a href="truck.html">Arrange Pickup</a></p>
+                <p><a href="about.html">How It Works</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>For Industries</h3>
+                <p><a href="login2.html">Find Suppliers</a></p>
+                <p><a href="login2.html">Industry Dashboard</a></p>
+                <p><a href="truck.html">Arrange Delivery</a></p>
+                <p><a href="benefits.html">Benefits</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p><i class="fas fa-envelope"></i> info@bioflow.com</p>
+                <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                <p><i class="fas fa-map-marker-alt"></i> Mumbai, India</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 BIOFLOW. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = mobileMenuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Animate on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.benefit-card, .impact-stat').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

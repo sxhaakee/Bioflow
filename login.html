@@ -2,76 +2,387 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Login Form </title>
-    <link rel="stylesheet" href="login.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Delay the animation to start after a short delay (adjust the delay as needed)
-            setTimeout(function() {
-                document.getElementById("tittle").style.opacity = "1";
-                document.getElementById("tittle").style.transform = "translateY(0)";
-                document.querySelector(".tag").style.opacity = "1";
-                document.querySelector(".tag").style.transform = "translateY(0)";
-            }, 60); // 500ms delay
-        });
-    </script>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supplier Login - BIOFLOW</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0a4d68 0%, #088395 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animated Background */
+        body::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: moveBackground 20s linear infinite;
+        }
+
+        @keyframes moveBackground {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* Floating Elements */
+        .floating-fish {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.1;
+            animation: float 15s ease-in-out infinite;
+        }
+
+        .floating-fish:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .floating-fish:nth-child(2) { top: 70%; left: 80%; animation-delay: 5s; }
+        .floating-fish:nth-child(3) { top: 40%; left: 90%; animation-delay: 10s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(10deg); }
+        }
+
+        .login-container {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            max-width: 1000px;
+            width: 90%;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .login-left {
+            flex: 1;
+            background: linear-gradient(135deg, #0a4d68 0%, #088395 100%);
+            padding: 60px 40px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-left::before {
+            content: '🐟';
+            position: absolute;
+            font-size: 15rem;
+            opacity: 0.1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .login-left h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .login-left p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .features-list {
+            list-style: none;
+            position: relative;
+        }
+
+        .features-list li {
+            padding: 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .features-list i {
+            font-size: 1.5rem;
+            color: #05c3dd;
+        }
+
+        .login-right {
+            flex: 1;
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .login-header h2 {
+            font-size: 2rem;
+            color: #0a4d68;
+            margin-bottom: 0.5rem;
+        }
+
+        .login-header p {
+            color: #757575;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #757575;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px 12px 45px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #088395;
+            box-shadow: 0 0 0 3px rgba(8, 131, 149, 0.1);
+        }
+
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .remember-forgot label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            color: #555;
+        }
+
+        .remember-forgot a {
+            color: #088395;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .remember-forgot a:hover {
+            text-decoration: underline;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #0a4d68 0%, #088395 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(8, 131, 149, 0.3);
+        }
+
+        .divider {
+            text-align: center;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 45%;
+            height: 1px;
+            background: #e0e0e0;
+        }
+
+        .divider::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            width: 45%;
+            height: 1px;
+            background: #e0e0e0;
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #555;
+        }
+
+        .register-link a {
+            color: #088395;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+
+        .back-home {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .back-home a {
+            color: #757575;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-home a:hover {
+            color: #088395;
+        }
+
+        @media (max-width: 768px) {
+            .login-container {
+                flex-direction: column;
+            }
+
+            .login-left {
+                padding: 40px 30px;
+            }
+
+            .login-left h1 {
+                font-size: 2rem;
+            }
+
+            .login-right {
+                padding: 40px 30px;
+            }
+        }
+    </style>
 </head>
+<body>
+    <!-- Floating Elements -->
+    <div class="floating-fish">🐟</div>
+    <div class="floating-fish">🐠</div>
+    <div class="floating-fish">🐡</div>
 
-<body background="login1.jpg">
-    
-    <header>
-        <nav>
-            <ul>
-                <li><a class="nav" id="hom"href="index.html">HOME</a></li>
-                <li><a class="nav" id="pro" href="product.html">PRODUCTS</a></li>
-                <li><a class="nav" id="dea"href="deal.html">DEALS</a></li>
-                <li><a class="nav" id="abo" href="about.html">ABOUT US</a></li>
-                <li><a class="nav" id="con" href="contact.html">CONTACT</a></li>
+    <div class="login-container">
+        <!-- Left Side -->
+        <div class="login-left">
+            <h1>BIOFLOW</h1>
+            <p>Welcome back, Supplier! Login to manage your fish waste listings and connect with industries.</p>
+            <ul class="features-list">
+                <li>
+                    <i class="fas fa-fish"></i>
+                    <span>List your fish waste easily</span>
+                </li>
+                <li>
+                    <i class="fas fa-handshake"></i>
+                    <span>Connect with verified industries</span>
+                </li>
+                <li>
+                    <i class="fas fa-dollar-sign"></i>
+                    <span>Turn waste into revenue</span>
+                </li>
+                <li>
+                    <i class="fas fa-truck"></i>
+                    <span>Coordinated pickup services</span>
+                </li>
             </ul>
-        </nav>
-        
-        
-        <div class="login-buttons">
-            
-            <a href="login.html">Supplier Login</a>
-            <a href="login2.html">Consumer Login</a>
         </div>
-    </header>
-    <section id="tittle">
-        BIOFLOW
-    </section>
 
-     <div class="wrapper">
-        <form action="sup.html">
-            <h1>Supplier's Login</h1>
-            <div class="input-box">
-                <input type="text" placeholder="Username" required>
-                <box-icon type='solid' name='user'></box-icon>
+        <!-- Right Side - Login Form -->
+        <div class="login-right">
+            <div class="login-header">
+                <h2>Supplier Login</h2>
+                <p>Enter your credentials to access your dashboard</p>
             </div>
-            <div class="input-box">
-                <input type="password" placeholder="Password" required>
-                <box-icon name='lock-alt'></box-icon>
-            </div>
-            <div class="remember-forget">
-                <label><input type="checkbox"> remember me</label>
-                <a href="forgetpass.html">Forgot password?</a>
-            </div>
-           <a href="sup.html">
-    <button type="submit" class="btn">Login</button>
-</a>
+
+            <form action="sup.html" method="get">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    </div>
+                </div>
+
+                <div class="remember-forgot">
+                    <label>
+                        <input type="checkbox" name="remember">
+                        Remember me
+                    </label>
+                    <a href="forgetpass.html">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="btn-login">
+                    <i class="fas fa-sign-in-alt"></i> Login to Dashboard
+                </button>
+            </form>
+
+            <div class="divider">OR</div>
 
             <div class="register-link">
-                <p>Don't have an account? <a href='register.html'>Register</a></p>
+                Don't have an account? <a href="register.html">Register as Supplier</a>
             </div>
-            
-        </form>
-     </div>
-     <script src="login.js"></script>
+
+            <div class="back-home">
+                <a href="index.html">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
 </body>
-
-
 </html>

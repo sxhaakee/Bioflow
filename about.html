@@ -3,55 +3,530 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
-    <link rel="stylesheet" href="about.css">
+    <title>About Us - BIOFLOW</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            padding-top: 70px;
+        }
+
+        .about-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 8rem 2rem 6rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -250px;
+            right: -250px;
+        }
+
+        .about-hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            bottom: -200px;
+            left: -200px;
+        }
+
+        .about-hero h1 {
+            font-size: clamp(3rem, 7vw, 5rem);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-hero p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        .story-section {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .story-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .story-text h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .story-text p {
+            font-size: 1.1rem;
+            line-height: 2;
+            color: var(--gray-700);
+            margin-bottom: 1.5rem;
+        }
+
+        .story-image {
+            position: relative;
+            height: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .mission-vision {
+            padding: 5rem 2rem;
+            background: var(--light-bg);
+        }
+
+        .mv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .mv-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mv-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .mv-card h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .mv-card h3 i {
+            font-size: 2.5rem;
+            color: #667eea;
+        }
+
+        .mv-card p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: var(--gray-700);
+        }
+
+        .team-section {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .team-card {
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .team-avatar {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .team-card h4 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .team-card p {
+            color: var(--gray-600);
+            margin-bottom: 1rem;
+        }
+
+        .team-social {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .team-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--light-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .team-social a:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .values-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .value-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-10px);
+        }
+
+        .value-card i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-card p {
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .story-content {
+                grid-template-columns: 1fr;
+            }
+
+            .mv-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a class="nav" id="hom" href="index.html">HOME</a></li>
-                <li><a class="nav" id="pro" href="product.html">PRODUCTS</a></li>
-                <li><a class="nav" id="dea"href="deal.html">DEALS</a></li>
-                <li><a class="nav" id="abo" href="about.html">ABOUT US</a></li>
-                <li><a class="nav" id="con" href="contact.html">CONTACT</a></li>
-            </ul>
-        </nav>
-        
-        
-        <div class="login-buttons">
-            
-            <a href="login.html">Supplier Login</a>
-            <a href="login2.html">Consumer Login</a>
+    <!-- Modern Navigation -->
+    <header class="modern-header" id="header">
+        <div class="nav-container">
+            <div class="logo">
+                BIO<span>FLOW</span>
+            </div>
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="product.html">BROWSE WASTE</a></li>
+                    <li><a href="deal.html">DEALS</a></li>
+                    <li><a href="benefits.html">BENEFITS</a></li>
+                    <li><a href="about.html" class="active">ABOUT US</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </nav>
+            <div class="nav-actions">
+                <a href="login.html" class="btn btn-outline">Supplier Login</a>
+                <a href="login2.html" class="btn btn-primary">Industry Login</a>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </header>
-    <br>
-    <br>
-    <div class="container">
-        <main>
-            <h1 id="about">About Us</h1>
-            <section class="about-section">
-                <div class="about-content">
-                    <h1 class="h1">Who We Are</h1>
-                    <p>Our team, comprising Muhammad Haashid, Mohammed Shakeeb, Fathimath Ansheera, and Mohannad Kallumanti, is dedicated to exploring new approaches to solve complex challenges. Through our project, BioFlow, we aim to make a positive impact by transforming fish waste into valuable resources, contributing to a sustainable future. BioFlow directly connects businesses (B2B) with no middlemen, streamlining the process for maximum efficiency. BioFlow's key features include direct B2B connection, waste transformation, sustainable impact, and efficiency.</p>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <h1>About BIOFLOW</h1>
+        <p>Transforming fish waste into opportunities, one connection at a time</p>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story-section">
+        <div class="story-content">
+            <div class="story-text">
+                <h2>Our Story</h2>
+                <p>
+                    BIOFLOW was born from a simple observation: millions of tons of fish waste are discarded every year, polluting our oceans and wasting valuable resources. Meanwhile, industries desperately need these materials for fertilizers, animal feed, and other products.
+                </p>
+                <p>
+                    We saw an opportunity to solve both problems simultaneously. By creating a platform that connects fish waste suppliers with industries that need it, we're turning environmental pollution into economic opportunity.
+                </p>
+                <p>
+                    Today, BIOFLOW serves hundreds of suppliers and industries across India, facilitating the recycling of thousands of tons of fish waste and generating millions in revenue for coastal communities.
+                </p>
+            </div>
+            <div class="story-image">
+                <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; font-size: 8rem;">
+                    🐟
                 </div>
-                <div class="about-image">
-                    <img src="about.jpg" alt="About Us Image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="mission-vision">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Mission & Vision</h2>
+                <p class="section-subtitle">Driving sustainable change through innovation</p>
+            </div>
+            <div class="mv-grid">
+                <div class="mv-card">
+                    <h3>
+                        <i class="fas fa-bullseye"></i>
+                        Our Mission
+                    </h3>
+                    <p>
+                        To create a sustainable ecosystem where fish waste is recognized as a valuable resource, not garbage. We connect suppliers with industries, reduce ocean pollution, and generate income for coastal communities while supporting the circular economy.
+                    </p>
                 </div>
-            </section>
-            <section class="mission-section">
-                <div class="mission-image">
-                    <img src="about2.jpg" alt="Our Mission Image">
+                <div class="mv-card">
+                    <h3>
+                        <i class="fas fa-eye"></i>
+                        Our Vision
+                    </h3>
+                    <p>
+                        A world where zero fish waste ends up in oceans or landfills. Every kilogram is recycled into valuable products, creating a thriving circular economy that benefits both people and the planet.
+                    </p>
                 </div>
-                <div class="mission-content">
-                    <h1 class="h1">Our Mission</h1>
-                    <p>Our mission at BioFlow is to revolutionize the fishing industry by transforming fish waste into valuable resources. We aim to connect businesses with excess fish waste to those in need of sustainable resources, thereby reducing waste and fostering a circular economy. We are also hiring freelance truck drivers for the transportation of waste, ensuring efficient and timely delivery. By providing a cost-effective and eco-friendly solution, we strive to positively impact industries and communities, promoting responsible consumption and environmental stewardship. Join us in reshaping the future of resource management and sustainability.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" style="color: white;">Our Core Values</h2>
+                <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">
+                    The principles that guide everything we do
+                </p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <i class="fas fa-leaf"></i>
+                    <h4>Sustainability</h4>
+                    <p>We're committed to environmental protection and creating a circular economy.</p>
                 </div>
-            </section>
-        </main>
-        <footer>
+                <div class="value-card">
+                    <i class="fas fa-handshake"></i>
+                    <h4>Transparency</h4>
+                    <p>Direct connections, fair pricing, and honest communication for all stakeholders.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h4>Innovation</h4>
+                    <p>Using technology to solve age-old problems in new and effective ways.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-users"></i>
+                    <h4>Community</h4>
+                    <p>Supporting coastal communities and creating economic opportunities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Meet Our Team</h2>
+                <p class="section-subtitle">Passionate individuals driving change</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar">👨‍💼</div>
+                    <h4>Founder & CEO</h4>
+                    <p>Visionary Leader</p>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">👩‍💻</div>
+                    <h4>CTO</h4>
+                    <p>Technology Expert</p>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">👨‍🔬</div>
+                    <h4>Head of Operations</h4>
+                    <p>Logistics Specialist</p>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">👩‍🌾</div>
+                    <h4>Sustainability Director</h4>
+                    <p>Environmental Expert</p>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" style="background: var(--secondary-color); padding: 4rem 2rem; text-align: center; color: white;">
+        <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Join Our Mission</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.95;">
+            Be part of the solution. Start recycling fish waste today.
+        </p>
+        <div class="hero-actions">
+            <a href="login.html" class="btn" style="background: white; color: var(--secondary-color); font-size: 1.1rem; padding: 1rem 2rem;">
+                <i class="fas fa-fish"></i> Get Started
+            </a>
+            <a href="contact.html" class="btn btn-outline" style="border-color: white; color: white; font-size: 1.1rem; padding: 1rem 2rem;">
+                <i class="fas fa-envelope"></i> Contact Us
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="modern-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>BIOFLOW</h3>
+                <p>Connecting fish waste suppliers with industries. Turn waste into value, support sustainability.</p>
+            </div>
+            <div class="footer-section">
+                <h3>For Suppliers</h3>
+                <p><a href="login.html">List Your Waste</a></p>
+                <p><a href="login.html">Supplier Dashboard</a></p>
+                <p><a href="truck.html">Arrange Pickup</a></p>
+                <p><a href="about.html">How It Works</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>For Industries</h3>
+                <p><a href="login2.html">Find Suppliers</a></p>
+                <p><a href="login2.html">Industry Dashboard</a></p>
+                <p><a href="truck.html">Arrange Delivery</a></p>
+                <p><a href="benefits.html">Benefits</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p><i class="fas fa-envelope"></i> info@bioflow.com</p>
+                <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                <p><i class="fas fa-map-marker-alt"></i> Mumbai, India</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
             <p>&copy; 2024 BIOFLOW. All rights reserved.</p>
-        </footer>
-    </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = mobileMenuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Animate on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.team-card, .value-card, .mv-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>

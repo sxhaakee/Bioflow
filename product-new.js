@@ -1,48 +1,42 @@
-// Sample fish waste listings - In production, fetch from API
+// Sample product data - In production, fetch from API
 const allProducts = [
     {
         id: 1,
-        name: 'Fresh Fish Heads - Mumbai Dock',
-        category: 'fish-heads',
-        price: 15,
+        name: 'Premium Fish Meal',
+        category: 'fish-meal',
+        price: 1200,
         rating: 4.8,
-        reviews: 24,
-        description: 'Fresh fish heads from daily catch. Available 50kg daily. Located at Mumbai Fish Market.',
+        reviews: 124,
+        description: 'High-protein fish meal made from fresh fish waste. Perfect for animal feed and aquaculture.',
         image: 'product1.jpg',
-        badge: 'Fresh Today',
-        inStock: true,
-        location: 'Mumbai',
-        quantity: '50 kg'
+        badge: 'Popular',
+        inStock: true
     },
     {
         id: 2,
-        name: 'Fish Scales Bulk - Coastal Area',
-        category: 'fish-scales',
-        price: 20,
+        name: 'Pure Fish Oil',
+        category: 'fish-oil',
+        price: 1800,
         rating: 4.9,
-        reviews: 18,
-        description: 'Clean fish scales suitable for collagen extraction. Bulk quantity available.',
-        image: 'scales.jpg',
-        badge: 'Bulk Available',
+        reviews: 98,
+        description: 'Rich in omega-3 fatty acids. Ideal for supplements and animal nutrition.',
+        image: 'product2_.jpg',
+        badge: 'New',
         badgeType: 'new',
-        inStock: true,
-        location: 'Coastal Region',
-        quantity: '100 kg'
+        inStock: true
     },
     {
         id: 3,
-        name: 'Mixed Fish Waste - Restaurant Supply',
-        category: 'mixed-waste',
-        price: 12,
+        name: 'Organic Fish Fertilizer',
+        category: 'fertilizer',
+        price: 800,
         rating: 4.7,
-        reviews: 32,
-        description: 'Mixed fish waste from restaurant. Includes heads, tails, and bones. Daily supply.',
-        image: 'product2_.jpg',
-        badge: 'Daily Supply',
+        reviews: 156,
+        description: 'Nutrient-rich organic fertilizer from fish waste. Boosts plant growth naturally.',
+        image: 'product3.jpeg',
+        badge: 'Sale',
         badgeType: 'sale',
-        inStock: true,
-        location: 'City Center',
-        quantity: '80 kg'
+        inStock: true
     },
     {
         id: 4,
@@ -178,6 +172,7 @@ function createProductCard(product) {
     
     const badgeHTML = product.badge ? 
         `<div class="product-badge ${product.badgeType || ''}">${product.badge}</div>` : '';
+    
     const stars = generateStars(product.rating);
     
     card.innerHTML = `
@@ -191,20 +186,16 @@ function createProductCard(product) {
             <h3 class="product-title">${product.name}</h3>
             <p class="product-description">${product.description}</p>
             <div class="product-meta">
-                <div class="product-price">₹${product.price}/kg</div>
+                <div class="product-price">₹${product.price.toLocaleString()}</div>
                 <div class="product-rating">
                     ${stars}
                     <span>(${product.reviews})</span>
                 </div>
             </div>
-            <p style="color: #757575; font-size: 0.9rem; margin: 0.5rem 0;">
-                <i class="fas fa-map-marker-alt"></i> ${product.location || 'Location not specified'} | 
-                <i class="fas fa-weight"></i> ${product.quantity || 'N/A'}
-            </p>
             <div class="product-actions">
-                <button class="btn-add-cart" onclick="window.location.href='product-detail.html?id=${product.id}'">
-                    <i class="fas fa-eye"></i>
-                    View Details
+                <button class="btn-add-cart" onclick="addToCart(${product.id})">
+                    <i class="fas fa-shopping-cart"></i>
+                    Add to Cart
                 </button>
                 <button class="btn-wishlist" onclick="toggleWishlist(${product.id})">
                     <i class="far fa-heart"></i>
@@ -241,12 +232,10 @@ function generateStars(rating) {
 // Format category
 function formatCategory(category) {
     const categories = {
-        'fish-heads': 'Fish Heads',
-        'fish-tails': 'Fish Tails',
-        'fish-scales': 'Fish Scales',
-        'fish-bones': 'Fish Bones',
-        'fish-guts': 'Fish Guts',
-        'mixed-waste': 'Mixed Waste'
+        'fish-meal': 'Fish Meal',
+        'fish-oil': 'Fish Oil',
+        'fertilizer': 'Organic Fertilizer',
+        'fish-waste': 'Fish Waste'
     };
     return categories[category] || category;
 }
@@ -296,19 +285,7 @@ function sortProducts(sortBy) {
     }
 }
 
-// Contact supplier
-function contactSupplier(productId) {
-    const product = allProducts.find(p => p.id === productId);
-    if (!product) return;
-    
-    showNotification(`Connecting you with supplier for: ${product.name}`, 'success');
-    // In a real app, open chat or show contact details
-    setTimeout(() => {
-        alert(`Supplier Contact:\n\nWaste: ${product.name}\nLocation: ${product.location}\nQuantity: ${product.quantity}\nPrice: ₹${product.price}/kg\n\nContact: +91 98765 43210\nEmail: supplier@bioflow.com`);
-    }, 500);
-}
-
-// Add to cart (for wishlist)
+// Add to cart
 function addToCart(productId) {
     const product = allProducts.find(p => p.id === productId);
     if (!product) return;
@@ -325,7 +302,7 @@ function addToCart(productId) {
     }
     
     localStorage.setItem('cart', JSON.stringify(cart));
-    showNotification(`${product.name} added to wishlist!`, 'success');
+    showNotification(`${product.name} added to cart!`, 'success');
 }
 
 // Toggle wishlist

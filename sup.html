@@ -3,58 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BIOFLOW</title>
+    <title>Supplier Dashboard | BIOFLOW</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="sup.css">
 </head>
 <body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>BIO<span style="color: #ff6b35;">FLOW</span></h2>
+                <p>Supplier Dashboard</p>
+            </div>
+            <nav class="dashboard-nav">
+                <a href="#dashboard" class="nav-link active" data-section="dashboard"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="#listings" class="nav-link" data-section="listings"><i class="fas fa-fish"></i> My Listings</a>
+                <a href="#requests" class="nav-link" data-section="requests"><i class="fas fa-handshake"></i> Requests</a>
+                <a href="#pickups" class="nav-link" data-section="pickups"><i class="fas fa-truck"></i> Pickups</a>
+                <a href="#earnings" class="nav-link" data-section="earnings"><i class="fas fa-dollar-sign"></i> Earnings</a>
+                <a href="#settings" class="nav-link" data-section="settings"><i class="fas fa-cog"></i> Settings</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="index.html" class="back-to-site-btn">
+                    <i class="fas fa-arrow-left"></i> Back to Site
+                </a>
+                <button class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </aside>
 
-    <!-- Navigation Section -->
-    <header>
-        <nav>
-            <ul>
-                <li><a class="nav" href="index.html">HOME</a></li>
-                <li><a class="nav" href="product.html">PRODUCTS</a></li>
-                <li><a class="nav" href="deal.html">DEALS</a></li>
-                <li><a class="nav" href="about.html">ABOUT US</a></li>
-                <li><a class="nav" href="contact.html">CONTACT</a></li>
-            </ul>
-        </nav>
-        
-        
-        <div class="login-buttons">
-            
-            <a href="login.html">Supplier Login</a>
-            <a href="login2.html">Consumer Login</a>
-        </div>
-    </header>
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <header class="top-bar">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search...">
+                </div>
+                <div class="user-actions">
+                    <button class="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                    <div class="user-profile">
+                        <img src="https://via.placeholder.com/40" alt="Profile" class="profile-img">
+                        <span>Supplier Name</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </header>
 
-    <!-- Product Listing Section -->
-    
-       
-    <div class="header-bar">
-        <h2>SELL YOUR PRODUCTS</h2>
+            <!-- Dashboard Content -->
+            <div class="content-area">
+                <!-- Stats Cards -->
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #e3f2fd;">
+                            <i class="fas fa-fish" style="color: #1976d2;"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Active Listings</h3>
+                            <p class="stat-number">8</p>
+                            <span class="stat-change positive">+2 this week</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #e8f5e9;">
+                            <i class="fas fa-handshake" style="color: #388e3c;"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Completed Deals</h3>
+                            <p class="stat-number">24</p>
+                            <span class="stat-change positive">+5 this month</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #fff8e1;">
+                            <i class="fas fa-dollar-sign" style="color: #ffa000;"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Total Earnings</h3>
+                            <p class="stat-number">₹45,230</p>
+                            <span class="stat-change positive">+18% from last month</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #f3e5f5;">
+                            <i class="fas fa-weight" style="color: #8e24aa;"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Waste Sold (kg)</h3>
+                            <p class="stat-number">2,450</p>
+                            <span class="stat-change positive">This month</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Requests -->
+                <div class="recent-orders">
+                    <div class="section-header">
+                        <h2>Industry Requests</h2>
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                    <div class="orders-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Request ID</th>
+                                    <th>Industry</th>
+                                    <th>Waste Type</th>
+                                    <th>Quantity (kg)</th>
+                                    <th>Price Offered</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recent-orders-body">
+                                <!-- Requests will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Add Waste Listing Button -->
+                <button id="add-product-btn" class="floating-btn">
+                    <i class="fas fa-plus"></i> List Fish Waste
+                </button>
+
+                <!-- Waste Listing Modal -->
+                <div id="product-modal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>List Your Fish Waste</h3>
+                            <span class="close-modal">&times;</span>
+                        </div>
+                        <form id="product-form">
+                            <div class="form-group">
+                                <label for="product-category">Waste Type</label>
+                                <select id="product-category" required>
+                                    <option value="">Select waste type</option>
+                                    <option value="fish-heads">Fish Heads</option>
+                                    <option value="fish-tails">Fish Tails</option>
+                                    <option value="fish-scales">Fish Scales</option>
+                                    <option value="fish-bones">Fish Bones</option>
+                                    <option value="fish-guts">Fish Guts/Intestines</option>
+                                    <option value="mixed-waste">Mixed Fish Waste</option>
+                                </select>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="product-quantity">Available Quantity (kg)</label>
+                                    <input type="number" id="product-quantity" required placeholder="e.g., 50">
+                                </div>
+                                <div class="form-group">
+                                    <label for="product-price">Expected Price per kg (₹)</label>
+                                    <input type="number" id="product-price" step="0.01" required placeholder="e.g., 15">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="product-name">Location</label>
+                                <input type="text" id="product-name" required placeholder="e.g., Mumbai Fish Market, Dock Area">
+                            </div>
+                            <div class="form-group">
+                                <label for="product-description">Additional Details</label>
+                                <textarea id="product-description" rows="3" placeholder="Freshness, storage conditions, pickup availability, etc."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="product-images">Upload Photos (Optional)</label>
+                                <div class="image-upload">
+                                    <input type="file" id="product-images" multiple accept="image/*">
+                                    <label for="product-images" class="upload-btn">
+                                        <i class="fas fa-cloud-upload-alt"></i> Upload Images
+                                    </label>
+                                    <div id="image-preview" class="image-preview"></div>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-secondary close-modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary">List Waste</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
 
-            <div id="products-container">
-                <!-- Product listings will be dynamically added here -->
-            </div>
-        </div>
-    
-
-    <!-- Product Listing Section -->
-    <section id="post-button">
-        <!-- Post Button -->
-        <div class="container">
-            <div class="product-card post-card">
-                <span class="plus-icon">+</span>
-                <p>Post a Product</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Add your login check and redirection logic using JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="sup.js"></script>
 </body>
-
-
 </html>

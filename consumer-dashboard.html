@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consumer Dashboard | BIOFLOW</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="sup.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>BIO<span style="color: #ff6b35;">FLOW</span></h2>
+                <p>Industry Dashboard</p>
+            </div>
+            <nav class="dashboard-nav">
+                <a href="#dashboard" class="nav-link active" data-section="dashboard"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="#orders" class="nav-link" data-section="orders"><i class="fas fa-shopping-bag"></i> My Orders</a>
+                <a href="#wishlist" class="nav-link" data-section="wishlist"><i class="fas fa-heart"></i> Wishlist</a>
+                <a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a>
+                <a href="product.html"><i class="fas fa-store"></i> Browse Waste</a>
+                <a href="deal.html"><i class="fas fa-fire"></i> Deals</a>
+                <a href="#profile" class="nav-link" data-section="profile"><i class="fas fa-user"></i> Profile</a>
+                <a href="#settings" class="nav-link" data-section="settings"><i class="fas fa-cog"></i> Settings</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="index.html" class="back-to-site-btn">
+                    <i class="fas fa-arrow-left"></i> Back to Site
+                </a>
+                <button class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <header class="top-bar">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search products, orders...">
+                </div>
+                <div class="user-actions">
+                    <button class="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">5</span>
+                    </button>
+                    <div class="user-profile">
+                        <img src="https://via.placeholder.com/40" alt="Profile" class="profile-img">
+                        <span>Consumer Name</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="content-area">
+                <!-- Stats Cards -->
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #e3f2fd;">
+                            <i class="fas fa-shopping-bag" style="color: #1976d2;"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Total Orders</h3>
+                            <p class="stat-number">24</p>
+                            <span class="stat-change positive">+3 this month</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #e8f5e9;">
+                            <i class="fas fa-check-circle" style="color: #388e3c;"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Completed</h3>
+                            <p class="stat-number">18</p>
+                            <span class="stat-change positive">75% success rate</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #fff8e1;">
+                            <i class="fas fa-heart" style="color: #ffa000;"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Wishlist Items</h3>
+                            <p class="stat-number">12</p>
+                            <span class="stat-change positive">+2 new items</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #f3e5f5;">
+                            <i class="fas fa-wallet" style="color: #8e24aa;"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Total Spent</h3>
+                            <p class="stat-number">₹45,230</p>
+                            <span class="stat-change positive">This year</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Orders -->
+                <div class="recent-orders">
+                    <div class="section-header">
+                        <h2>Recent Orders</h2>
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                    <div class="orders-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Product</th>
+                                    <th>Date</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="consumer-orders-body">
+                                <!-- Orders will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Recommended Products -->
+                <div class="recent-orders" style="margin-top: 2rem;">
+                    <div class="section-header">
+                        <h2>Recommended For You</h2>
+                        <a href="product-new.html" class="view-all">Browse All</a>
+                    </div>
+                    <div id="recommended-products" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+                        <!-- Recommended products will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="consumer-dashboard.js"></script>
+</body>
+</html>

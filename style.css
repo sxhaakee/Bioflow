@@ -11,6 +11,7 @@ header {
     top: 0; /* Position it at the top */
     width: 100%; /* Make it full-width */
     z-index:1000; /* Ensure it's above other elements */
+    box-sizing: border-box; /* Ensure padding is included in width */
 }
 
 /* Rest of your CSS styles */
@@ -40,6 +41,8 @@ nav a:hover {
 .login-buttons {
     margin-right: 30px; /* Adjusted margin */
     margin-left: 20px;
+    display: flex;
+    gap: 10px;
 }
 
 nav ul li {
@@ -50,7 +53,7 @@ nav ul li {
 }
 
 .login-buttons a {
-    margin-left: 15px;
+    /* margin-left: 15px; removed to use gap */
     padding: 10px 20px;
     border: 1px solid #e3ebf7; /* Light Grey */
     border-radius: 5px;
@@ -71,21 +74,25 @@ body{
  #title{
     color: #cfe0f1;
     font-family: serif;
-    font-size: 170px;
-    padding-top:25px;
+    font-size: clamp(3rem, 15vw, 190px); /* Responsive font size */
+    padding-top:45px;
     text-align: center;
     text-shadow: #0f0f10;
+    line-height: 1.2;
+    margin-bottom: 20px;
 
  } 
 
 .tag{
     color: #cfe0f1;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 27px;
+    font-size: clamp(1.2rem, 4vw, 32px); /* Responsive font size */
     text-align: center;
     font-weight:800;
     font-variant:small-caps;
-  
+    padding-bottom: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 .details{
     background-color: #09223c;
@@ -98,9 +105,10 @@ body{
 }
 .main{
     text-align:center;
-    font-size: 40px;
+    font-size: clamp(24px, 5vw, 40px);
     padding-top:70px;
     padding-left: 25px;
+    padding-right: 25px;
     padding-bottom: 60px;
     margin:0px;
 
@@ -109,9 +117,10 @@ body{
 .ben{
       
         text-align:center;
-        font-size: 40px;
+        font-size: clamp(24px, 5vw, 40px);
         padding-top:40px;
         padding-left: 25px;
+        padding-right: 25px;
         padding-bottom: 20px;
         margin:0px;
     
@@ -120,13 +129,17 @@ body{
 }
 .det{
     padding-top:50px;
-    text-align: center;
-    font-size: 28px;
+    text-align: left;
+    font-size: clamp(20px, 4vw, 28px);
+    padding-left: 15px; /* Add some padding for mobile */
+    padding-right: 15px;
 }
 .det2{
     padding-top:0px;
-    text-align: center;
-    font-size: 25px;
+    text-align: left;
+    font-size: clamp(18px, 3.5vw, 25px);
+    padding-left: 15px;
+    padding-right: 15px;
 }
 /* Footer Section */
 footer {
@@ -162,18 +175,21 @@ p{
      text-shadow: #ECF0F1;
     margin:auto;
     text-align: center;
-    font-size: 30px;
-    width:700px;
+    font-size: clamp(20px, 5vw, 30px);
+    width: 90%; /* Use percentage instead of fixed px */
+    max-width: 700px; /* Max width constraint */
     border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
     border: 5px solid rgb(223, 226, 248);
+    padding: 10px; /* Ensure text doesn't hit borders */
+    box-sizing: border-box;
 }
 
 /* Hover animation for the Today's Deal container */
 .todays-deal-container:hover {
     background-color: #c60303; /* Darker blue on hover, you can change this */
-    transform: scale(1.15); /* Scale up slightly on hover */
+    transform: scale(1.05); /* Reduced scale slightly for mobile safety */
 }
 
     /* Add this code to your existing CSS */
@@ -197,13 +213,16 @@ p{
     justify-content: space-around;
     align-items: center;
     padding: 20px;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    gap: 20px; /* Add gap between items */
 }
 
 /* Styling for each service */
 .service {
     color: rgb(46, 86, 147);
     text-align: center;
-    width: 250px;
+    width: 100%; /* Full width on mobile */
+    max-width: 250px; /* Limit width on desktop */
     padding: 20px;
     background-color: #cee4f8;
     border-radius: 10px;
@@ -262,4 +281,38 @@ p{
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     padding-bottom: 0px; /* Adjust this value as needed */
     font-size: 35px;
+}
+
+/* Mobile Media Queries */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding-bottom: 10px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        margin-top: 10px;
+    }
+    
+    .login-buttons {
+        margin-top: 15px;
+        margin-right: 0;
+        margin-left: 0;
+    }
+    
+    .services-container {
+        flex-direction: column;
+    }
+    
+    .service {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    body {
+        padding-top: 140px; /* Increase padding for taller mobile header */
+    }
 }
